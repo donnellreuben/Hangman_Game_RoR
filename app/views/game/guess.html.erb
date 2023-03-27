@@ -1,0 +1,12 @@
+<h1>Hangman</h1>
+<p><%= @message %></p>
+<p><%= @word_masked %></p>
+<p>Guessed letters: <%= @guesses.join(', ') %></p>
+<%= form_tag('/game/guess') do %>
+  <%= hidden_field_tag(:word, @word) %>
+  <%= hidden_field_tag(:guesses, @guesses.join(',')) %>
+  <%= hidden_field_tag(:word_masked, @word_masked) %>
+  <%= label_tag(:guess, 'Your guess:') %>
+  <%= text_field_tag(:guess) %>
+  <%= submit_tag('Guess') %>
+<% end %>
